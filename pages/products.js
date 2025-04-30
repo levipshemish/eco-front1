@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import { mongooseConnect } from "@/lib/mongoose";
 import { Product } from "@/models/Product";
+import Image from "next/image";
 import Link from "next/link";
 
 export default function ProductsPage({products}) {
@@ -16,7 +17,13 @@ export default function ProductsPage({products}) {
                     </div>
                     
                     <Link href={'/product/'+product._id}>
-                       <img className="max-w-30" src={product.images[0]}/>
+                    <Image
+                            src={product.images[0]}
+                            alt={product.title}
+                            width={120}
+                            height={120}
+                            className="max-w-30 object-cover"
+                     />
                     </Link>
                     <div className='text-xl text-[#30343F]' >{product.price}$</div>
                 </div>

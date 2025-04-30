@@ -2,6 +2,7 @@ import { CartContext } from "@/components/CartContext";
 import Header from "@/components/Header";
 import { mongooseConnect } from "@/lib/mongoose";
 import { Product } from "@/models/Product";
+import Image from "next/image";
 import { useContext, useState } from "react";
 
 export default function ProductPage({product}) {
@@ -14,13 +15,27 @@ export default function ProductPage({product}) {
          <Header/>
          <div className="bg-white flex justify-around">
             <div className="mb-5">
-                <div><img  className='w-50 m-5' src={activeImage}/></div>
+                <div className="m-5 w-[300px] h-[300px] relative">
+                    <Image
+                    src={activeImage}
+                    alt={product.title}
+                    fill
+                    className="object-contain"
+                    sizes="(max-width: 768px) 100vw, 300px"
+                    />
+                </div>
                  <div className="flex gap-7 px-7">
                     {product.images.map(image => (
                         <div key={image}
                         className={image === activeImage ? "border-2 rounded-sm border-blue-500" : ""}
                             onClick={() => setActiveImage(image)}>
-                            <img className="max-w-18 h-12" src={image}/>   
+                            <Image
+                            src={image}
+                            alt={product.title}
+                            width={72}
+                            height={48}
+                            className="object-contain"
+                            />                
                         </div>
                     ))}
                 </div>

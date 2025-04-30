@@ -2,6 +2,7 @@ import { CartContext } from "@/components/CartContext";
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import Header from "@/components/Header";
+import Image from "next/image";
 
 
 export default function CartPage() {
@@ -78,7 +79,7 @@ export default function CartPage() {
                 <div>
                     <h2 className="text-3xl p-3 mb-2">Cart</h2>
                     {!cartProducts?.length && (
-                        <div className="px-4 py-4 text-2xl">Your Cart is empty</div>
+                        <div className="px-4 py-4  text-2xl">Your Cart is empty</div>
                     )}    
                     {products?.length > 0 && (
                         <table className="w-full text-left border-collapse">
@@ -93,7 +94,14 @@ export default function CartPage() {
                           {products.map(product => (
                             <tr key={product._id} className="border-t">
                               <td className="px-4 py-3 flex items-center gap-4">
-                                <img src={product.images[0]} alt={product.title} className="w-20 h-20 object-cover rounded" />
+                                
+                                  <Image 
+                                    src={product.images[0]} 
+                                    alt={product.title} 
+                                    width={80} 
+                                    height={80}
+                                    className="object-cover rounded"
+                                  />
                                 <span className="font-medium text-gray-700">{product.title}</span>
                               </td>
                               <td className="px-4 py-3">

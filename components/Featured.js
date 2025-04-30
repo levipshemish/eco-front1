@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useContext } from "react";
 import { CartContext } from "./CartContext";
+import Image from "next/image";
 
 export default function Featured({product}) {
     const {addProduct} = useContext(CartContext);
@@ -27,9 +28,11 @@ export default function Featured({product}) {
           </div>
         </div>
         <div className="w-56 h-56 flex-shrink-0">
-          <img
-            src="/Images/macbook_image.jpeg" // trimmed for brevity
+         <Image
+            src="/Images/macbook_image.jpeg"
             alt="MacBook Air 2025"
+            width={800}  // adjust to your layout
+            height={600} // adjust to your layout
             className="w-full h-full object-cover rounded-lg shadow"
           />
         </div>
