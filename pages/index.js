@@ -1,4 +1,6 @@
+//import Brands from "@/components/Brands";
 import Featured from "@/components/Featured";
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import NewProducts from "@/components/NewProducts";
 import { mongooseConnect } from "@/lib/mongoose";
@@ -6,10 +8,13 @@ import { Product } from "@/models/Product";
 
 export default function HomePage({featuredProduct,newProducts}) {
   return (
-    <div className="bg-[#FAFAFF]">
+    <div className="bg-[#FFFFFF]">
       <Header />
       <Featured product={featuredProduct}/>
+      
       <NewProducts products={newProducts}/>
+      {/* <Brands/> */}
+      <Footer/>
     </div>
   )
 }
